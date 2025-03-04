@@ -10,11 +10,12 @@
 <body class="bg-slate-100 text-state-900">
     <header class="bg-slate-800 shadow-lg">
         <nav>
-            <a href="{{route('home')}}" class="nav-link">Home</a>
+            <a href="{{route('home')}}" class="nav-link">HOME</a>
             
             <div class="flex items-center gap-4">
-                <a href="#" class="nav-link">Login</a>
-                <a href="{{ route('register')}}" class="nav-link">Register</a>
+                <a href="{{route('login')}}" class="nav-link">LOGIN</a>
+                <br>
+                <a href="{{ route('register')}}" class="nav-link">REGISTER</a>
             </div>
         </nav>
     </header>

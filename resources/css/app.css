@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+header {
+    background-color: #5c646c;
+    padding: 1rem;
+}
+
+body{
+    background-color: #f8f9fa;
+}
+
+header h1 {
+    color: rgb(117, 89, 89);
+    font-size: 2rem;
+}
+
+header a {
+    color: rgb(1, 183, 26);
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+}
