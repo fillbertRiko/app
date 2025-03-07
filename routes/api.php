@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\SuppliersController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\ReportsController;
+use App\Models\Customers;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,53 +45,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:sanctum'], function () 
     Route::get('register', [RegisterController::class, 'index']);
     Route::post('register', [RegisterController::class, 'store']);
 
-    // Customers Routes
-    Route::get('customers', [CustomersController::class, 'index']);
-    Route::get('customers/create', [CustomersController::class, 'create']);
-    Route::post('customers', [CustomersController::class, 'store']);
-    Route::get('customers/{customer}/edit', [CustomersController::class, 'edit']);
-    Route::put('customers/{customer}', [CustomersController::class, 'update']);
-    Route::delete('customers/{customer}', [CustomersController::class, 'destroy']);
+    // Resource Routes
+    //customers
+    Route::get('/customers', [CustomersController::class, 'index'])->name('customers.index');
+    Route::get('/customers/create', [CustomersController::class, 'create'])->name('customers.create');
+    Route::get('/customers/{customer}/edit', [CustomersController::class, 'edit'])->name('customers.edit');
 
-    // Invoices Routes
-    Route::get('invoices', [InvoicesController::class, 'index']);
-    Route::post('invoices', [InvoicesController::class, 'store']);
-    Route::put('invoices/{invoice}', [InvoicesController::class, 'update']);
-    Route::delete('invoices/{invoice}', [InvoicesController::class, 'destroy']);
-
-    // Materials Routes
-    Route::get('materials', [MaterialsController::class, 'index']);
-    Route::post('materials', [MaterialsController::class, 'store']);
-    Route::put('materials/{material}', [MaterialsController::class, 'update']);
-    Route::delete('materials/{material}', [MaterialsController::class, 'destroy']);
-
-    // Suppliers Routes
-    Route::get('suppliers', [SuppliersController::class, 'index']);
-    Route::post('suppliers', [SuppliersController::class, 'store']);
-    Route::put('suppliers/{supplier}', [SuppliersController::class, 'update']);
-    Route::delete('suppliers/{supplier}', [SuppliersController::class, 'destroy']);
-
-    // Users Routes
-    Route::get('users', [UserController::class, 'index']);
-    Route::post('users', [UserController::class, 'store']);
-    Route::put('users/{user}', [UserController::class, 'update']);
-    Route::delete('users/{user}', [UserController::class, 'destroy']);
-
-    // Products Routes
-    Route::get('products', [ProductsController::class, 'index']);
-    Route::post('products', [ProductsController::class, 'store']);
-    Route::put('products/{product}', [ProductsController::class, 'update']);
-    Route::delete('products/{product}', [ProductsController::class, 'destroy']);
-
-    // Reports Routes
-    Route::get('reports', [ReportsController::class, 'index']);
-    Route::post('reports', [ReportsController::class, 'store']);
-    Route::put('reports/{report}', [ReportsController::class, 'update']);
-    Route::delete('reports/{report}', [ReportsController::class, 'destroy']);
-
-    // Staff Routes
-    Route::get('staff', [StaffController::class, 'index']);
-    Route::post('staff', [StaffController::class, 'store']);
-    Route::put('staff/{staff}', [StaffController::class, 'update']);
-    Route::delete('staff/{staff}', [StaffController::class, 'destroy']);
+    //` invoices
+    Route::apiResource('invoices', InvoicesController::class);
+    Route::apiResource('materials', MaterialsController::class);
+    Route::apiResource('suppliers', SuppliersController::class);
+    Route::apiResource('users', UserController::class);
+    Route::apiResource('products', ProductsController::class);
+    Route::apiResource('reports', ReportsController::class);
+    Route::apiResource('staff', StaffController::class);
 });
