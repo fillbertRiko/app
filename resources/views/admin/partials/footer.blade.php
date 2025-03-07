@@ -1,7 +1,4 @@
-<!-- Footer -->
-<div class="navbar navbar-sm navbar-footer border-top">
-    <div class="container-fluid">
-        <span>&copy; 2025 <a href="">Borrow ST TEAM</a></span>
-    </div>
-</div>
-<!-- /footer -->
+<footer class="bg-white py-2 text-center text-sm text-gray-500 mt-4">
+    © 2025 Borrow ST TEAM
+  </footer>
+  

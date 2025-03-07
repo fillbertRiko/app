@@ -1,21 +1,23 @@
-<!-- resources/views/admin/layouts/app.blade.php -->
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-    @include('admin.partials.head')
-    @include('admin.partials.style')
-    <title>@yield('title', 'Dashboard')</title>
+  @include('admin.partials.head')
+  @include('admin.partials.style')
 </head>
-<body>
-    @include('admin.partials.header')
-    <div class="container">
-        @include('admin.partials.sidebar')
+<body class="bg-gray-100">
 
-        <main class="content">
-            @yield('content')
-        </main>
-    </div>
-    @include('admin.partials.footer')
-    @include('admin.partials.scripts')
+  @include('admin.partials.header')
+
+  <div class="flex">
+    @include('admin.partials.sidebar')
+    
+    <main class="flex-1 p-6">
+      @yield('content')
+    </main>
+  </div>
+
+  @include('admin.partials.footer')
+  @include('admin.partials.scripts')
+
 </body>
 </html>

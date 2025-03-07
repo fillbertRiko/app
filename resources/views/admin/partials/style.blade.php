@@ -1,4 +1,9 @@
-<!-- resources/views/admin/partials/style.blade.php -->
-<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
-<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-<link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+<!-- Nếu có CSS tùy chỉnh, thêm tại đây -->
+<style>
+    /* Ví dụ:
+    body {
+      font-family: Arial, sans-serif;
+    }
+    */
+  </style>
+  
