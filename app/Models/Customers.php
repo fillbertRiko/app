@@ -8,13 +8,17 @@ use Illuminate\Notifications\Notifiable;
 class Customers extends Model
 {
     use Notifiable;
+    protected $primaryKey = 'CustomerID';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'CustomerID', 'CustomerName', 'Phone', 'Address',
+        'CustomerID',
+        'CustomerName', 
+        'Phone', 
+        'Address',
     ];
     /**
      * The attributes that should be hidden for arrays.
@@ -22,7 +26,10 @@ class Customers extends Model
      * @var array
      */
     protected $hidden = [
-        'CustomerID', 'CustomerName', 'Phone', 'Address',
+        'CustomerID', 
+        'CustomerName', 
+        'Phone', 
+        'Address',
     ];
 
     /**
@@ -30,6 +37,7 @@ class Customers extends Model
      *
      * @var array
      */
+    public $timestamps = false;
     protected $casts = [
         'CustomerID' => 'integer',
         'CustomerName' => 'string',

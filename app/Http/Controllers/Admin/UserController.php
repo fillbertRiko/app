@@ -4,36 +4,34 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\User_Accounts;
 
 class UserController extends Controller
 {
     // Display a listing of the users
     public function index()
     {
-        $users = User::all();
+        $users = User_Accounts::all();
         return view('admin.users.index', compact('users'));
     }
 
     // Show the form for creating a new user
     public function create()
     {
-        return view('admin.users.create');
+        return view('admin.users.edit');
     }
 
     // Store a newly created user in storage
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+            'UsernameAcc' => 'required|string|max:100|unique:user_accounts',
+            'PasswordAcc' => 'required|string|min:8|confirmed',
         ]);
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
+        User_Accounts::create([
+            'UsernameAcc' => $request->UsernameAcc,
+            'PasswordAcc' => bcrypt($request->PasswordAcc),
         ]);
 
         return redirect()->route('admin.users.index')->with('success', 'User created successfully.');
@@ -42,14 +40,14 @@ class UserController extends Controller
     // Display the specified user
     public function show($id)
     {
-        $user = User::findOrFail($id);
-        return view('admin.users.show', compact('user'));
+        $user = User_Accounts::findOrFail($id);
+        return view('admin.users.index', compact('user'));
     }
 
     // Show the form for editing the specified user
     public function edit($id)
     {
-        $user = User::findOrFail($id);
+        $user = User_Accounts::findOrFail($id);
         return view('admin.users.edit', compact('user'));
     }
 
@@ -57,16 +55,14 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $id,
-            'password' => 'nullable|string|min:8|confirmed',
+            'UsernameAcc' => 'required|string|max:100|unique:user_accounts,UsernameAcc,' . $id . ',AccountID',
+            'PasswordAcc' => 'nullable|string|min:8|confirmed',
         ]);
 
-        $user = User::findOrFail($id);
+        $user = User_Accounts::findOrFail($id);
         $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password ? bcrypt($request->password) : $user->password,
+            'UsernameAcc' => $request->UsernameAcc,
+            'PasswordAcc' => $request->PasswordAcc ? bcrypt($request->PasswordAcc) : $user->PasswordAcc,
         ]);
 
         return redirect()->route('admin.users.index')->with('success', 'User updated successfully.');
@@ -75,7 +71,7 @@ class UserController extends Controller
     // Remove the specified user from storage
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
+        $user = User_Accounts::findOrFail($id);
         $user->delete();
 
         return redirect()->route('admin.users.index')->with('success', 'User deleted successfully.');
