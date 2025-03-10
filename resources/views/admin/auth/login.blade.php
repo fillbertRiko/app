@@ -2,32 +2,56 @@
 
 @section('content')
 @auth
-    <script>
-        window.location.href = "{{ route('admin.dashboard') }}";
-    </script>
+  <script>
+    window.location.href = "{{ route('dashboard') }}";
+  </script>
 @else
-    <form method="POST" action="{{ route('admin.auth.login') }}" class="max-w-md mx-auto mt-10 p-6 bg-white shadow-md rounded">
-        @csrf
-        <div class="mb-4">
-            <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
-            <input type="text" id="username" name="username" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-lg">
+    <div class="mb-6 text-center">
+      <h2 class="mt-6 text-3xl font-extrabold text-gray-900">
+        Đăng nhập vào tài khoản
+      </h2>
+      <p class="mt-2 text-sm text-gray-600">
+        Hoặc đăng ký <a href="{{ route('register') }}" class="font-medium text-indigo-600 hover:text-indigo-500">tại đây</a>
+      </p>
+    </div>
+    <form class="space-y-6" method="POST" action="{{ route('login') }}">
+      @csrf
+      <div class="grid grid-cols-1 gap-6">
+        <div>
+          <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+          <input id="username" name="username" type="text" required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" 
+            placeholder="Nhập username">
         </div>
-        <div class="mb-4">
-            <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-            <input type="email" id="email" name="email" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input id="email" name="email" type="email" required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" 
+            placeholder="Nhập email">
         </div>
-        <div class="mb-4">
-            <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
-            <input type="password" id="password" name="password" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <input id="password" name="password" type="password" required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" 
+            placeholder="Nhập password">
         </div>
-        <div class="mb-4">
-            <input type="checkbox" id="remember" name="remember" class="mr-2 leading-tight">
-            <label for="remember" class="text-sm text-gray-700">Remember Me</label>
+        <div class="flex items-center">
+          <input id="remember" name="remember" type="checkbox"
+            class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
+          <label for="remember" class="ml-2 block text-sm text-gray-900">Remember Me</label>
         </div>
-        <div class="flex items-center justify-between">
-            <button type="submit" class="btn-submit">SUBMIT</button>
-        </div>
-        
+      </div>
+
+      <div>
+        <button type="submit"
+          class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition">
+          Đăng nhập
+        </button>
+      </div>
     </form>
+  </div>
+</div>
 @endauth
 @endsection

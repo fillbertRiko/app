@@ -6,7 +6,7 @@
 <div class="container mx-auto p-6">
     <h2 class="text-2xl font-bold mb-4">Danh sách tài khoản</h2>
 
-    <a href="{{ route('admin.users.edit') }}" class="bg-blue-500 text-white px-4 py-2 rounded-md">Sửa tài khoản</a>
+    <a href="{{ route('edit') }}" class="bg-blue-500 text-white px-4 py-2 rounded-md">Sửa tài khoản</a>
 
     <table class="w-full mt-4 border border-gray-300">
         <thead class="bg-gray-200">
