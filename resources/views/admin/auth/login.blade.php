@@ -20,12 +20,6 @@
       @csrf
       <div class="grid grid-cols-1 gap-6">
         <div>
-          <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
-          <input id="username" name="username" type="text" required
-            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" 
-            placeholder="Nhập username">
-        </div>
-        <div>
           <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
           <input id="email" name="email" type="email" required
             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" 
@@ -42,6 +36,10 @@
             class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
           <label for="remember" class="ml-2 block text-sm text-gray-900">Remember Me</label>
         </div>
+
+        @error('failed')
+          <p class="error" {{$message}}></p>
+        @enderror
       </div>
 
       <div>

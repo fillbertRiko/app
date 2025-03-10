@@ -12,9 +12,9 @@
     @auth
       <div class="flex items-center space-x-4">
         <span class="hidden md:inline text-gray-600">Hello, {{ Auth::user()->name }}!</span>
-        <form action="{{ route('logout') }}" method="GET">
+        <form action="{{ route('logout') }}" method="POST">
           @csrf
-          <button type="submit"
+          <button x-on:click="open = !open" type="submit"
             class="transition duration-300 ease-in-out bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
             Log out
           </button>
