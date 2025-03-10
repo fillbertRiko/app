@@ -18,7 +18,11 @@ class AuthController extends Controller
         ]);
 
         // Register
-        $user = User::create($fields);
+        $user = User::create([
+            'name'     => $fields['name'],
+            'email'    => $fields['email'],
+            'password' => bcrypt($fields['password']),  //ma hoa bang bycrypt
+        ]);
 
         // Login
         Auth::login($user);
