@@ -27,5 +27,12 @@ class User extends Authenticatable
     // Ép kiểu dữ liệu cho các trường
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
+
+    // Giá trị mặc định cho các trường
+    protected $attributes = [
+        'role' => 'staff',
     ];
 }
