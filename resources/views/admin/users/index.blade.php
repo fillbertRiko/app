@@ -38,6 +38,9 @@
             </tr>
             @endforeach
         </tbody>
+        <div>
+            {{$users -> links()}}
+        </div>
     </table>
 </div>
 @endsection
